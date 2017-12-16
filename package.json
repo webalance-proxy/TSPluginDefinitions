@@ -1,6 +1,6 @@
 {
   "name": "@webalance/ts-plugin-definitions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typescript definitions for WeBalance Plugins",
   "main": "index.js",
   "typings": "index.ts",

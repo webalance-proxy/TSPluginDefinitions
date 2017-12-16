@@ -17,39 +17,52 @@ export interface Plugin {
     /**
      * If defined, allows for a dedicated page on the administration site to configure selected options
      */
-    webInterface?:{
-        /**
-         * The name to display on the link
-         */
-        name: string;
-        /**
-         * The configuration blocks
-         */
-        blocks: Array<{
-            /**
-             * The id of the input
-             */
-            keyName: string,
-            /**
-             * The name of the input
-             */
-            name: string,
-            /**
-             * The help text of the input
-             */
-            helpText: string,
-            /**
-             * The type of input
-             */
-            type: WebInterface_BlockTypes
+    webInterface?:WebInterface
 
-        }>
-
-    }
 
 
 }
 
+/**
+ * The setup for the administration page
+ */
+export interface WebInterface {
+    /**
+     * The name to display on the link
+     */
+    name: string;
+
+    /**
+     * Returns the values to fill in the webform when displayed
+     * @returns {{[p: string]: any}} A key-value pair of fields and their values, based on the keyName in blocks
+     */
+    getValues?:()=>{
+        [key: string]: any
+    }
+
+    /**
+     * The configuration blocks
+     */
+    blocks: Array<{
+        /**
+         * The id of the input
+         */
+        keyName: string,
+        /**
+         * The name of the input
+         */
+        name: string,
+        /**
+         * The help text of the input
+         */
+        helpText: string,
+        /**
+         * The type of input
+         */
+        type: WebInterface_BlockTypes
+
+    }>
+}
 
 export enum WebInterface_BlockTypes {
     /**
