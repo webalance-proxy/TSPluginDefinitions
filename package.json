@@ -1,0 +1,20 @@
+{
+  "name": "@webalance/ts-plugin-definitions",
+  "version": "1.0.0",
+  "description": "Typescript definitions for WeBalance Plugins",
+  "main": "index.js",
+  "typings": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webalance-proxy/TSPluginDefinitions.git"
+  },
+  "author": "Omar Zouai <omar@omarzouai.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/webalance-proxy/TSPluginDefinitions/issues"
+  },
+  "homepage": "https://github.com/webalance-proxy/TSPluginDefinitions#readme"
+}
