@@ -41,6 +41,12 @@ export interface WebInterface {
     }
 
     /**
+     * Called when updated values are saved in the web interface
+     * @param {{} | any} valueMap The new values object
+     */
+    setValues?:(valueMap: {} | any)=>void;
+
+    /**
      * The configuration blocks
      */
     blocks: Array<{
