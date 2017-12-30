@@ -8,11 +8,6 @@ export interface Plugin {
      */
     loadConfig:(config: any)=>void;
 
-    /**
-     * Called on startup to pass a save hook, to allow a plugin to save config data
-     * @param {(config: any) => void} data The callback hook
-     */
-    registerSaveHook:(data:(config:any)=>void)=>void;
 
     /**
      * If defined, allows for a dedicated page on the administration site to configure selected options
@@ -21,6 +16,14 @@ export interface Plugin {
 
 
 
+}
+
+declare global {
+    /**
+     * Function to call when you need to save config data
+     * @param data
+     */
+    function saveHook(data:any):void;
 }
 
 /**
@@ -43,8 +46,9 @@ export interface WebInterface {
     /**
      * Called when updated values are saved in the web interface
      * @param {{} | any} valueMap The new values object
+     * @param (error: string)=>void cb Use to report an error setting values
      */
-    setValues?:(valueMap: {} | any)=>void;
+    setValues?:(valueMap: {} | any, cb:(error: string)=>void)=>void;
 
     /**
      * The configuration blocks
@@ -66,6 +70,11 @@ export interface WebInterface {
          * The type of input
          */
         type: WebInterface_BlockTypes
+
+        /**
+         * If the type is a select, the options
+         */
+        select?: SelectOptions
 
     }>
 }
@@ -99,4 +108,31 @@ export enum WebInterface_BlockTypes {
      * A password entry
      */
     PASSWORD
+}
+
+export interface SelectOptions {
+    /**
+     * Allow multiple selections
+     */
+    multi: boolean;
+    /**
+     * The values to display
+     * Use objects to specify groups, and array for values
+     */
+    items: Select_Group | Select_Entries
+}
+
+export interface Select_Group {
+    [key: string]: Select_Group | Select_Entries
+}
+export interface Select_Entries extends Array<Select_Entry>{};
+export interface Select_Entry {
+    /**
+     * The text to display
+     */
+    name: string,
+    /**
+     * The option value
+     */
+    value: string
 }

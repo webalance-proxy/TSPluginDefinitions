@@ -31,3 +31,4 @@ var WebInterface_BlockTypes;
      */
     WebInterface_BlockTypes[WebInterface_BlockTypes["PASSWORD"] = 6] = "PASSWORD";
 })(WebInterface_BlockTypes = exports.WebInterface_BlockTypes || (exports.WebInterface_BlockTypes = {}));
+;
